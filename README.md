@@ -16,6 +16,14 @@ Express.js , Node.js, JSON, Javascript
 
 ### Executing program
 
+click link --https://evening-journey-18478-50f1762612e8.herokuapp.com/
+
+you will then be taken to the application
+
+![Alt text](image-1.png)
+
+Click the button "Get Started"
+
 Simply write the title of your notes where it says Note Title, and then write the corresponding infomation in the Note Text just below the title. Then click the button in the right corner of the page Save Note, it will then save the note to storage. Your note will be save to the left side of the screen. To delete notes, click the red garbage can next to the note you wish to delete.
 
 ## Help
