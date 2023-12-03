@@ -21,15 +21,36 @@ router.post('/api/notes', (req, res) => {
     res.json(dbJson);
 });
 
-router.delete('/api/notes/:id', (req, res) => {
-    let data = fs.readFileSync("Develop/db/db.json", "utf8");
-    const dataJSON = JSON.parse(data);
-    const newNotes = dataJSON.filter((note) => {
-        return note.id !== req.params.id;
-    });
-    fs.writeFileSync("Develop/db/db.json",JSON.stringify(newNotes));
-    res.json("Note deleted.");
-});
+// DELETE /api/notes/:id
+// get one specific note, req.body.id, readfile db.json, find entry that matches that id
+router.delete("/notes/:id", (req, res) => {
+    // rewrite data and return only elements that DON'T match deleted note ID
+    data = data.filter((el) => el.id !== req.params.id);
+    fs.writeFile(
+      path.join(__dirname, "../../db/db.json"),
+      JSON.stringify(data),
+      function (err) {
+        if (err) {
+          res.status(404).json({ error: err });
+        }
+        res.json(data);
+      }
+    );
+  });
+
+
+
+
+
+// router.delete('/api/notes/:id', (req, res) => {
+//     let data = fs.readFileSync("Develop/db/db.json", "utf8");
+//     const dataJSON = JSON.parse(data);
+//     const newNotes = dataJSON.filter((note) => {
+//         return note.id !== req.params.id;
+//     });
+//     fs.writeFileSync("Develop/db/db.json",JSON.stringify(newNotes));
+//     res.json("Note deleted.");
+// });
 
 module.exports = router;
 
